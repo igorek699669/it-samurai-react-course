@@ -2,13 +2,13 @@ import React from 'react';
 import classes from './index.module.css';
 import {MyPosts} from "./MyPosts";
 import {ProfileInfo} from "./ProfileInfo";
-const Profile = () => {
+const Profile = (props) => {
     return (
         <div>
 
             <ProfileInfo/>
 
-            <MyPosts/>
+            <MyPosts postsData={props.postsData}/>
         </div>
     )
 };
