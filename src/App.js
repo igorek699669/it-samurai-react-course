@@ -14,9 +14,11 @@ function App(props) {
          <div className='content'>
              <Route exact
                     path='/dialogs'
-                    render={()=><Dialogs dialogsData={props.dialogsData} messageData={props.messageData} />}/>
+                    render={()=><Dialogs
+                        dialogsData={props.appState.dialogsPage.dialogsData}
+                        messageData={props.appState.dialogsPage.messageData} />}/>
              <Route exact path='/profile'
-                    render={()=> <Profile postsData={props.postsData}/>}/>
+                    render={()=> <Profile postsData={props.appState.profilePage.postsData}/>}/>
          </div>
         </div>
       </BrowserRouter>
