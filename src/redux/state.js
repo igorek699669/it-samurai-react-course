@@ -1,3 +1,4 @@
+import {rerenderEntireTree} from '../render'
 
 let dialogsData = [
     {id: 1, name: 'dima1'},
@@ -24,6 +25,15 @@ let state ={
         dialogsData,
     },
 };
+export let addPost = (postMessage) => {
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likesCount: 0
+    }
+    state.profilePage.postsData.push(newPost)
+    rerenderEntireTree(state)
+}
 export {
     state
 }

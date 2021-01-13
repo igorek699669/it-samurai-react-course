@@ -18,7 +18,9 @@ function App(props) {
                         dialogsData={props.appState.dialogsPage.dialogsData}
                         messageData={props.appState.dialogsPage.messageData} />}/>
              <Route exact path='/profile'
-                    render={()=> <Profile postsData={props.appState.profilePage.postsData}/>}/>
+                    render={()=> <Profile
+                        addPost={props.addPost}
+                        postsData={props.appState.profilePage.postsData}/>}/>
          </div>
         </div>
       </BrowserRouter>
