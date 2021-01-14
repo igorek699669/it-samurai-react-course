@@ -19,19 +19,25 @@ let postsData = [
 let state ={
     profilePage:{
         postsData,
+        newPostText: 'itkama',
     },
     dialogsPage: {
         messageData,
         dialogsData,
     },
 };
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     }
     state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText = ''
+    rerenderEntireTree(state)
+}
+export let changeNewPostText = (text) => {
+    state.profilePage.newPostText = text
     rerenderEntireTree(state)
 }
 export {

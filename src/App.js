@@ -20,7 +20,10 @@ function App(props) {
              <Route exact path='/profile'
                     render={()=> <Profile
                         addPost={props.addPost}
-                        postsData={props.appState.profilePage.postsData}/>}/>
+                        changeNewPostText={props.changeNewPostText}
+                        postsData={props.appState.profilePage.postsData}
+                        newPostText={props.appState.profilePage.newPostText}
+                    />}/>
          </div>
         </div>
       </BrowserRouter>
