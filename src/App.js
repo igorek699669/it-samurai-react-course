@@ -15,6 +15,8 @@ function App(props) {
              <Route exact
                     path='/dialogs'
                     render={()=><Dialogs
+                        dispatch={props.dispatch}
+                        store={props.store}
                         dialogsData={props.appState.dialogsPage.dialogsData}
                         messageData={props.appState.dialogsPage.messageData} />}/>
              <Route exact path='/profile'
