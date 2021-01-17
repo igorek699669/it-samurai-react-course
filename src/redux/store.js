@@ -27,6 +27,9 @@ let store ={
             ],
             newMessageBody: ''
         },
+        sidebar: {
+
+        }
     },
     _callSubscriber () {
         console.log('state changed')

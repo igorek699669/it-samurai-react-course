@@ -5,7 +5,7 @@ import {Message} from "./Message";
 import {sendMessageCreator, updateNewMessageBodyCreator} from '../../redux/reducers/dialogs-reducer'
 
 const Dialogs = (props) => {
-    let newMessageBody = props.store._state.dialogsPage.newMessageBody
+    let newMessageBody = props.state.dialogsPage.newMessageBody
     let onSendMessageClick = () => {
         props.dispatch(sendMessageCreator())
     }
