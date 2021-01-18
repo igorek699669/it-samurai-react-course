@@ -18,11 +18,17 @@ const MyPosts = (props) => {
                 my posts
             </div>
             <div className="add_post">
-                <textarea ref={newPostElement} name="" onChange={onChange} value={props.newPostText}/>
+                <textarea ref={newPostElement}
+                          name=""
+                          onChange={onChange}
+                          value={props.profilePage.newPostText}/>
                 <button onClick={onAddPost} >Add post</button>
             </div>
             <div className="posts-wrapper">
-                {props.postsData.map((el)=><Post id={el.id} message={el.message} likesCount={el.likesCount}/>)}
+                {props.profilePage.postsData.map((el)=><Post
+                    id={el.id}
+                    message={el.message}
+                    likesCount={el.likesCount}/>)}
             </div>
         </div>
     )

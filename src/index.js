@@ -3,9 +3,9 @@ import './index.css';
 import {store} from './redux/redux-store'
 import ReactDOM from 'react-dom'
 import App from './App'
-import {Provider} from './StoreContext'
+import {Provider} from 'react-redux'
 
-let rerenderEntireTree =(state) => {
+let rerenderEntireTree =() => {
     ReactDOM.render(
         <React.StrictMode>
             <Provider store={store}>
@@ -18,6 +18,5 @@ let rerenderEntireTree =(state) => {
 
 rerenderEntireTree(store.getState())
 store.subscribe(()=> {
-    let state= store.getState()
-    rerenderEntireTree(state)
+    rerenderEntireTree()
 })

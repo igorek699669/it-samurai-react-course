@@ -4,7 +4,7 @@ import {DialogItem} from "./DialogItem";
 import {Message} from "./Message";
 
 const Dialogs = (props) => {
-    let newMessageBody = props.newMessageBody
+    let newMessageBody = props.dialogsPage.newMessageBody
     let onSendMessageClick = () => {
         props.onSendMessageClick()
     }
@@ -15,11 +15,11 @@ const Dialogs = (props) => {
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-                {props.dialogsData.map((el)=> <DialogItem name={el.name} id={el.id} />)}
+                {props.dialogsPage.dialogsData.map((el)=> <DialogItem name={el.name} id={el.id} />)}
             </div>
             <div className={styles.messages}>
                 <div>
-                    {props.messageData.map((el)=> <Message message={el.message} id={el.id}/>)}
+                    {props.dialogsPage.messageData.map((el)=> <Message message={el.message} id={el.id}/>)}
                 </div>
                 <div>
                     <div>
