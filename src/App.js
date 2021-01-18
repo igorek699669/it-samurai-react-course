@@ -14,12 +14,9 @@ function App(props) {
          <div className='content'>
              <Route exact
                     path='/dialogs'
-                    render={()=><DialogsContainer
-                        store={props.store} />}/>
+                    render={()=><DialogsContainer />}/>
              <Route exact path='/profile'
-                    render={()=> <Profile
-                        store={props.store}
-                    />}/>
+                    render={()=> <Profile />}/>
          </div>
         </div>
       </BrowserRouter>
