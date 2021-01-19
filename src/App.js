@@ -4,6 +4,7 @@ import {Header} from "./components/Header";
 import {Navbar} from "./components/Navbar";
 import {Profile} from "./components/Profile";
 import {DialogsContainer} from './components/Dialogs/DialogsContainer'
+import {UsersContainer} from './components/Users/UsersContainer'
 
 function App(props) {
   return (
@@ -17,6 +18,8 @@ function App(props) {
                     render={()=><DialogsContainer />}/>
              <Route exact path='/profile'
                     render={()=> <Profile />}/>
+             <Route exact path='/users'
+                    render={()=> <UsersContainer/>}/>
          </div>
         </div>
       </BrowserRouter>
