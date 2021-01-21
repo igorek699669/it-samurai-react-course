@@ -1,31 +1,37 @@
 import React from 'react'
 import styles from './users.module.css'
-import axios from 'axios'
 import userImg from '../../assets/images/avatar.png'
 
 const Users = (props) => {
-    let getUsers = () => {
-        if (props.users.length === 0) {
-            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-                props.setUsers(response.data.items)
-            })
-        }
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize )
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
     }
-
 
     return (
         <div>
-            <button onClick={getUsers}>get users</button>
+            <div>
+                {pages.map(p => {
+                    return <span onClick={() => props.onPageChanged(p)}
+                                 className={props.currentPage === p && styles.selectedPage}>{p}</span>
+                })}
+            </div>
             {
-                props.users.map(u=><div key={u.id}>
+                props.users.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <img src={u.photos.small != null? u.photos.small: userImg} className={styles.userPhoto} alt=""/>
+                            <img src={u.photos.small != null ? u.photos.small : userImg} className={styles.userPhoto}
+                                 alt=""/>
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={()=>{props.unfollow(u.id)}}>unfollow</button>
-                                : <button onClick={()=>{props.follow(u.id)}}>follow</button>
+                                ? <button onClick={() => {
+                                    props.unfollow(u.id)
+                                }}>unfollow</button>
+                                : <button onClick={() => {
+                                    props.follow(u.id)
+                                }}>follow</button>
                             }
 
                         </div>
@@ -41,10 +47,10 @@ const Users = (props) => {
                         </span>
                         <span>
                             <div>
-                                {"u.location.country"}
+                                {'u.location.country'}
                             </div>
                             <div>
-                                {"u.location.city"}
+                                {'u.location.city'}
                             </div>
                         </span>
                     </span>
