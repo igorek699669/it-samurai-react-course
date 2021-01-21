@@ -2,10 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import styles from './users.module.css'
 import {
-    followCreator,
-    setCurrentPageCreator,
-    setUsersCreator, setUsersTotalCountCreator, toggleIsFetchingCreator,
-    unfollowCreator
+    follow,
+    setCurrentPage,
+    setUsers, setTotalUsersCount, toggleIsFetching,
+    unfollow
 } from '../../redux/reducers/users-reducer'
 import axios from 'axios'
 import {Users} from './Users'
@@ -20,34 +20,12 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) =>{
-            dispatch(followCreator(userId))
-        },
-        unfollow: (userId) =>{
-            dispatch(unfollowCreator(userId))
-        },
-        setUsers: (users)=> {
-            dispatch(setUsersCreator(users))
-        },
-        setTotalUsersCount: (totalCount)=> {
-            dispatch(setUsersTotalCountCreator(totalCount))
-        },
-        setCurrentPage: (pageNumber)=> {
-            dispatch(setCurrentPageCreator(pageNumber))
-        },
-        toggleIsFetching: (isFetching)=>{
-            dispatch(toggleIsFetchingCreator(isFetching))
-        }
 
-    }
-}
-
-class ContainerForAPI extends React.Component{
-    constructor(props){
+class ContainerForAPI extends React.Component {
+    constructor(props) {
         super(props)
     }
+
     componentDidMount() {
         this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
@@ -56,6 +34,7 @@ class ContainerForAPI extends React.Component{
             this.props.setTotalUsersCount(response.data.totalCount)
         })
     }
+
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber)
         this.props.toggleIsFetching(true)
@@ -65,11 +44,11 @@ class ContainerForAPI extends React.Component{
         })
     }
 
-    render () {
+    render() {
 
         return (
             <>
-                {this.props.isFetching ? <Preloader/>: null}
+                {this.props.isFetching ? <Preloader/> : null}
                 <Users totalUsersCount={this.props.totalUsersCount}
                        pageSize={this.props.pageSize}
                        currentPage={this.props.currentPage}
@@ -82,4 +61,12 @@ class ContainerForAPI extends React.Component{
         )
     }
 }
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(ContainerForAPI)
+
+export const UsersContainer = connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    setTotalUsersCount,
+    setCurrentPage,
+    toggleIsFetching
+})(ContainerForAPI)
