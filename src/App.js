@@ -16,7 +16,7 @@ function App(props) {
              <Route exact
                     path='/dialogs'
                     render={()=><DialogsContainer />}/>
-             <Route path='/profile'
+             <Route path='/profile/:userId?'
                     render={()=> <ProfileContainer />}/>
              <Route exact path='/users'
                     render={()=> <UsersContainer/>}/>
