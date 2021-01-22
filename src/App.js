@@ -2,9 +2,9 @@ import React from 'react';
 import {Route , BrowserRouter} from 'react-router-dom'
 import {Header} from "./components/Header";
 import {Navbar} from "./components/Navbar";
-import {Profile} from "./components/Profile";
 import {DialogsContainer} from './components/Dialogs/DialogsContainer'
 import {UsersContainer} from './components/Users/UsersContainer'
+import {ProfileContainer} from './components/Profile/ProfileContainer'
 
 function App(props) {
   return (
@@ -16,8 +16,8 @@ function App(props) {
              <Route exact
                     path='/dialogs'
                     render={()=><DialogsContainer />}/>
-             <Route exact path='/profile'
-                    render={()=> <Profile />}/>
+             <Route path='/profile'
+                    render={()=> <ProfileContainer />}/>
              <Route exact path='/users'
                     render={()=> <UsersContainer/>}/>
          </div>
