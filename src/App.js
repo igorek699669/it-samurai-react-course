@@ -1,16 +1,16 @@
 import React from 'react';
 import {Route , BrowserRouter} from 'react-router-dom'
-import {Header} from "./components/Header";
 import {Navbar} from "./components/Navbar";
 import {DialogsContainer} from './components/Dialogs/DialogsContainer'
 import {UsersContainer} from './components/Users/UsersContainer'
 import {ProfileContainer} from './components/Profile/ProfileContainer'
+import {HeaderContainer} from './components/Header/HeaderContainer'
 
 function App(props) {
   return (
       <BrowserRouter>
         <div className="App">
-         <Header/>
+         <HeaderContainer/>
          <Navbar/>
          <div className='content'>
              <Route exact
