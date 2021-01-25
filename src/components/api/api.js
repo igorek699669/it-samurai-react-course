@@ -13,11 +13,23 @@ export const usersAPI = {
             .then(response => response.data)
     },
     follow (userId) {
-        return instance.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+        return instance.post(`follow/${userId}`)
             .then(response => response.data)
     },
     unfollow (userId) {
-        return instance.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`)
+        return instance.delete(`follow/${userId}`)
             .then(response => response.data)
     },
+}
+export const profileAPI = {
+    getProfile (userId) {
+       return instance.get(`profile/${userId}`)
+            .then(response => response.data)
+    },
+}
+export const authAPI = {
+    me () {
+        return instance.get(`auth/me`)
+            .then(response => response.data)
+    }
 }
