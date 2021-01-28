@@ -4,10 +4,17 @@ import styles from './users.module.css'
 import {
     follow,
     setCurrentPage,
-    unfollow, toggleIsFollowingProgress, getUsers
+    unfollow, toggleIsFollowingProgress, requestUsers
 } from '../../redux/reducers/users-reducer'
 import {Users} from './Users'
 import {Preloader} from '../common/Preloader'
+import {
+    getCurrentPage,
+    getFollowingInProgress,
+    getIsFetching,
+    getPageSize,
+    getTotalUsersCount, getUsers
+} from '../../redux/reducers/users-selectors'
 
 
 
@@ -45,12 +52,12 @@ class ContainerForAPI extends React.Component {
 }
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
 export const UsersContainer = connect(mapStateToProps, {
@@ -58,5 +65,5 @@ export const UsersContainer = connect(mapStateToProps, {
     unfollow,
     setCurrentPage,
     toggleIsFollowingProgress,
-    getUsers
+    getUsers: requestUsers
 })(ContainerForAPI)
