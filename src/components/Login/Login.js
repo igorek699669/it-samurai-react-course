@@ -5,7 +5,7 @@ import {required} from '../../utils/validators/validators'
 import {connect} from 'react-redux'
 import {login} from '../../redux/reducers/auth-reducer'
 import {Redirect} from 'react-router-dom'
-
+import s from '../common/FormsControls/FormsControls.module.css'
 
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -57,6 +57,11 @@ const LoginForm = (props) => {
                         component={Input}
                     />
                 </div>
+                {props.error && (
+                    <div className={s.formSummaryError}>
+                        {props.error}
+                    </div>
+                )}
                 <div>
                     <button>Login</button>
                 </div>
