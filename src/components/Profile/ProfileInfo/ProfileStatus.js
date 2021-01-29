@@ -1,57 +1,46 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-class ProfileStatus extends React.Component{
-    state = {
-        editMode: false,
-        status: this.props.status
-    }
-    activateEditMode = () => {
-        this.setState({
-            editMode: true
-        })
-    }
-    deactivateEditMode = () => {
-        this.setState({
-            editMode: false
-        })
-        this.props.updateStatus(this.state.status)
-    }
-    onStatusChange = (e) => {
-        this.setState({
-            status: e.target.value
-        })
-    }
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.status !== this.props.status){
-            this.setState({
-                status: this.props.status
-            })
-        }
-    }
+const ProfileStatus = (props) => {
+    const [editMode, setEditMode] = useState(false)
+    const [status, setStatus] = useState(props.status)
 
-    render() {
-        return (
-            <>
-                {this.state.editMode?
-                    (
-                        <div>
-                            <input
-                                autoFocus
-                                onBlur={this.deactivateEditMode}
-                                onChange={this.onStatusChange}
-                                value={this.state.status || 'Ваш статус'}
-                            />
-                        </div>
-                    ):(
-                        <div>
-                            <span onDoubleClick={this.activateEditMode}>
-                                {this.props.status}
-                            </span>
-                        </div>
-                )}
-            </>
-        )
+    const activateEditMode = () => {
+        setEditMode(true)
     }
+    const deactivateEditMode = () => {
+        setEditMode(false)
+        props.updateStatus(status)
+    }
+    const onStatusChange = (e) => {
+        setStatus(e.target.value)
+    }
+    useEffect(() => {
+        setStatus(props.status)
+    }, [props.status])
+
+
+    return (
+        <>
+            {editMode?
+                (
+                    <div>
+                        <input
+                            autoFocus
+                            onBlur={deactivateEditMode}
+                            onChange={onStatusChange}
+                            value={status || 'Ваш статус'}
+                        />
+                    </div>
+                ):(
+                    <div>
+                        <span onDoubleClick={activateEditMode}>
+                            {status}
+                        </span>
+                    </div>
+            )}
+        </>
+    )
+
 }
 
 export {
