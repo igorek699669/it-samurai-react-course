@@ -8,7 +8,7 @@ const SET_USER_STATUS = 'SET_USER_STATUS'
 let initialState = {
     postsData: [
         {id: 1, message: 'hi', likesCount: 12},
-        {id: 2, message: 'hello', likesCount: 11},
+        {id: 2, message: 'hello', likesCount: 11}
     ],
     profile: null,
     status: ''
@@ -40,7 +40,7 @@ export const profileReducer = (state = initialState, action) => {
         case DELETE_POST:
             return {
                 ...state,
-                postsData: state.postsData.filter(p=> p.id !== action.postId)
+                postsData: state.postsData.filter(p => p.id !== action.postId)
             }
         default:
             return state
@@ -70,23 +70,21 @@ export let deletePost = (postId) => {
         postId
     }
 }
-export let getUserProfile = (userId) => (dispatch) =>{
-    profileAPI.getProfile(userId).then(data=>{
-        dispatch(setUserProfile(data))
-    })
-}
-export let getUserStatus = (userId) => (dispatch) =>{
-    profileAPI.getStatus(userId)
-        .then(status=>{
-            dispatch(setUserStatus(status))
-    })
-}
-export let updateUserStatus = (status) => (dispatch) =>{
-    profileAPI.updateStatus(status)
-        .then(data=>{
-            if(data.resultCode==0){
-                dispatch(setUserStatus(status))
-            }
+export let getUserProfile = (userId) => async (dispatch) => {
+    const data = await profileAPI.getProfile(userId)
 
-    })
+    dispatch(setUserProfile(data))
+}
+export let getUserStatus = (userId) => async (dispatch) => {
+    const status = await profileAPI.getStatus(userId)
+
+    dispatch(setUserStatus(status))
+}
+export let updateUserStatus = (status) => async (dispatch) => {
+    const data = await profileAPI.updateStatus(status)
+
+    if (data.resultCode == 0) {
+        dispatch(setUserStatus(status))
+    }
+
 }
