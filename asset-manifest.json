@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/it-samurai-react-course/static/css/main.a331ad78.chunk.css",
+    "main.js": "/it-samurai-react-course/static/js/main.fa4f214a.chunk.js",
+    "main.js.map": "/it-samurai-react-course/static/js/main.fa4f214a.chunk.js.map",
+    "runtime-main.js": "/it-samurai-react-course/static/js/runtime-main.d9679069.js",
+    "runtime-main.js.map": "/it-samurai-react-course/static/js/runtime-main.d9679069.js.map",
+    "static/js/2.6355bc54.chunk.js": "/it-samurai-react-course/static/js/2.6355bc54.chunk.js",
+    "static/js/2.6355bc54.chunk.js.map": "/it-samurai-react-course/static/js/2.6355bc54.chunk.js.map",
+    "index.html": "/it-samurai-react-course/index.html",
+    "static/css/main.a331ad78.chunk.css.map": "/it-samurai-react-course/static/css/main.a331ad78.chunk.css.map",
+    "static/js/2.6355bc54.chunk.js.LICENSE.txt": "/it-samurai-react-course/static/js/2.6355bc54.chunk.js.LICENSE.txt",
+    "static/media/preloader.acc49894.gif": "/it-samurai-react-course/static/media/preloader.acc49894.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9679069.js",
+    "static/js/2.6355bc54.chunk.js",
+    "static/css/main.a331ad78.chunk.css",
+    "static/js/main.fa4f214a.chunk.js"
+  ]
+}
