@@ -1,0 +1,7 @@
+.contact{
+    padding-left: 20px;
+}
+.formSummaryError {
+    border: 1px solid red;
+    color: red
+}

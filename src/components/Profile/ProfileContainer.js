@@ -1,7 +1,13 @@
 import React from 'react';
 import {Profile} from './Profile'
 import {connect} from 'react-redux'
-import {getUserProfile, getUserStatus, savePhoto, updateUserStatus} from '../../redux/reducers/profile-reducer'
+import {
+    getUserProfile,
+    getUserStatus,
+    savePhoto,
+    saveProfile,
+    updateUserStatus
+} from '../../redux/reducers/profile-reducer'
 import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
 class ProfileAPIContainer extends React.Component{
@@ -49,6 +55,6 @@ let mapStateToProps = (state) => {
 }
 export const ProfileContainer =
     compose (
-        connect(mapStateToProps, {getUserProfile, getUserStatus, updateUserStatus, savePhoto} ),
+        connect(mapStateToProps, {getUserProfile, getUserStatus, updateUserStatus, savePhoto, saveProfile} ),
         withRouter
     ) (ProfileAPIContainer)

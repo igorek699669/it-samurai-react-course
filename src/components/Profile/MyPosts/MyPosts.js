@@ -19,6 +19,7 @@ const MyPosts = (props) => {
             <AddPostFormRedux onSubmit={addPost}/>
             <div className="posts-wrapper">
                 {props.profilePage.postsData.map((el)=><Post
+                    key={el.id}
                     id={el.id}
                     message={el.message}
                     likesCount={el.likesCount}/>)}
