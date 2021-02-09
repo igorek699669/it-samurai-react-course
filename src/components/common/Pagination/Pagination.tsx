@@ -1,7 +1,14 @@
 import React, {useState} from 'react'
 import styles from './pagination.module.css'
 
-const Pagination = (props) => {
+type PropsType = {
+    totalUsersCount: number,
+    pageSize: number,
+    portionSize: number,
+    currentPage: number,
+    onPageChanged: (pageNumber: number) => void
+}
+const Pagination: React.FC<PropsType> = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize )
     let pages = [];
@@ -21,17 +28,15 @@ const Pagination = (props) => {
             {pages
                 .filter(p => p>= leftPortionPageNumber && p<= rightPortionPageNumber)
                 .map(p => {
-                return <span onClick={() => props.onPageChanged(p)}
-                             className={props.currentPage === p ? styles.selectedPage: undefined}>{p} </span>
-            })}
+                    return <span onClick={() => props.onPageChanged(p)}
+                                 className={props.currentPage === p ? styles.selectedPage: undefined}>{p} </span>
+                })}
 
             { portionCount > portionNumber &&
-                <button onClick={ ()=> setPortionNumber(portionNumber + 1)}>RIGHT</button>
+            <button onClick={ ()=> setPortionNumber(portionNumber + 1)}>RIGHT</button>
             }
         </div>
     )
 }
 
-export {
-    Pagination
-}
+export {Pagination}
